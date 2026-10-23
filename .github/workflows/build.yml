@@ -21,14 +21,14 @@ jobs:
       - name: Build MockGpsShizuku
         working-directory: ./MockGpsShizuku
         run: |
-          gradle wrapper
+          gradle wrapper --gradle-version 7.5
           chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: Build AmiMockGps
         working-directory: ./AmiMockGps
         run: |
-          gradle wrapper
+          gradle wrapper --gradle-version 7.5
           chmod +x gradlew
           ./gradlew assembleDebug
 
