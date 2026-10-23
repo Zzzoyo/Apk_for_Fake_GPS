@@ -18,17 +18,21 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # 关键步骤：使用官方 Action 强制安装 Gradle 7.5
+      - name: Setup Gradle 7.5
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 7.5
+
       - name: Build MockGpsShizuku
         working-directory: ./MockGpsShizuku
         run: |
-          gradle wrapper --gradle-version 7.5
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
 
       - name: Build AmiMockGps
         working-directory: ./AmiMockGps
         run: |
-          gradle wrapper --gradle-version 7.5
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
 
