@@ -14,14 +14,14 @@ jobs:
           distribution: 'temurin'
 
       - name: Build MockGpsShizuku
+        working-directory: ./MockGpsShizuku
         run: |
-          cd MockGpsShizuku
           chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: Build AmiMockGps
+        working-directory: ./AmiMockGps
         run: |
-          cd AmiMockGps
           chmod +x gradlew
           ./gradlew assembleDebug
 
