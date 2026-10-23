@@ -24,15 +24,19 @@ jobs:
           gradle-version: 7.5
           cache-disabled: true
 
+      # اكتب ملف التكوين الإضافي لتجنب خطأ sdk.dir
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > MockGpsShizuku/local.properties
+          echo "sdk.dir=$ANDROID_HOME" > AmiMockGps/local.properties
+
       - name: Build MockGpsShizuku
         working-directory: ./MockGpsShizuku
-        run: |
-          gradle assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Build AmiMockGps
         working-directory: ./AmiMockGps
-        run: |
-          gradle assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload APKs
         uses: actions/upload-artifact@v4
